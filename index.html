@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Material Design Bootstrap</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark info-color" style="opacity: 0.5s;">
+        
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="#" style="font-weight: bold">Iam A Writer</a>
+        
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+        
+                <!-- Links -->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link waves-effect waves-light" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect waves-light" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect waves-light" href="#contact">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect waves-light" href="subjects/">The Subjects</a>
+                    </li>
+                    <!-- Dropdown -->
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">More</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item waves-effect waves-light" href="auth/index.php">Login</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#">Help</a>
+        
+                        </div>
+                    </li> -->
+        
+                </ul>
+                <!-- Links -->
+        
+                <form class="form-inline">
+                    <div class="md-form my-0">
+                        <div class="waves-input-wrapper waves-effect waves-light">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Collapsible content -->
+        
+        </nav>
+    <div class="">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-image" style="background-image: url(img/gradient1.jpg);">
+                    <div class="text-white text-center py-5 px-4 my-5">
+                        <div>
+                            <h1 class="card-title pt-3 mb-5 font-bold">
+                                <strong>At Iam a Writer we provide you with skills to get you going</strong>
+                            </h1>
+                            <p class="mx-5 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                                optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                                Odit sed qui, dolorum!.
+                            </p>
+                            <a class="btn btn-outline-white btn-rounded">
+                                <i class="fa fa-clone left"></i> View project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div mdbModal #webdev="mdb-modal" class="modal modal-sm fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+            aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+            <div class="modal-dialog modal-fluid" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close pull-right" aria-label="Close" (click)="webdev.hide()">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel" style="font-weight: bold">Freelancer Registration</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="reg.php" target="_blank">
+                            <div class="md-form">
+                                <input type="text" class="form-control" id="fname" mdbActive />
+                                <label for="fname">UserName</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="email" class="form-control" id="myEmail" data-error="wrong email" data-success="right email" mdbActive mdbInputValidate
+                                />
+                                <label for="myEmail">Email Address</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="password" class="form-control" id="password" mdbActive/>
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="password" class="form-control" id="confPass" mdbActive />
+                                <label for="confPass">Confirm Password</label>
+                            </div>
+                            <div class="row text-center">
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-md pull-left btn-secondary waves-light" aria-label="Close" (click)="webdev.hide()" mdbRippleRadius>Close</button>
+                                    <button type="submit" class="btn-md btn btn-outline-blue ml-auto">SUBMIT</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About -->
+    <section class="main" style="margin-top: 50px" id="about">
+        <div class="text-center title">
+            <h3 style="font-weight: bolld;">About Iam A Writer</h3>
+            <hr style="width: 250px;" class="info-color-dark">
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-md-9">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-title text-center">
+                                    <h4>
+                                        <i class="fa fa-book"></i>
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quibusdam, quas dolorum exercitationem quo magni placeat libero
+                                    facere.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card info-color">
+                                <div class="card-title text-center">
+                                    <h4 style="color: white">
+                                        <i class="fa fa-book"></i>
+                                    </h4>
+                                </div>
+                                <div class="card-body text-white">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quibusdam, quas dolorum exercitationem quo magni placeat libero
+                                    facere.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-title text-center">
+                                    <h4>
+                                        <i class="fa fa-book"></i>
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quibusdam, quas dolorum exercitationem quo magni placeat libero
+                                    facere.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-md-6 text-right">
+                            <img src="img/home_page/img1.png" class="img-responsive" />
+                        </div>
+                        <div class="col-md-6 text-left" style="font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif">
+                            <p style="margin-top:74px;">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium sapiente unde soluta nam eum quaerat illo sequi harum
+                                debitis aspernatur ipsum est quae minus temporibus repellendus ut, ab aliquid accusamus!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card" style="margin-right: 5px">
+                    <div class="card-header">
+                        <h4 style="font-weight: bold;">News Feeds</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-content" *ngFor="let article of (articles | slice : 0 : 3 );">
+                            <div class="card-title">
+                                <a href="/blog">{{article.title}}</a>
+                            </div>
+                            <p>
+                                {{article.content | slice : 0 : 100 }}..
+                            </p>
+                            <hr class="info-color-dark">
+                        </div>
+                        <!-- <div class="card-content" >
+            <div class="card-title">
+              <a routerLink="/blog" *ngFor= "let article of articles">{{article.title}}</a>
+              <hr class="info-color-dark">
+            </div>
+    
+            <div *ngIf="articles?.length > 0;else noItems">
+              <ul *ngFor="let article of articles">
+                <li>
+                  <strong>{{article.title}}:</strong>{{article.content}}</li>
+              </ul>
+            </div>
+            <ng-template #noItems>
+              <hr>
+              <h5>There are no articles to list</h5>
+            </ng-template>
+    
+          </div> -->
+                    </div>
+                    <div class="card-footer">
+                        <form method="POST" action="emails.php">
+                            <label>Subscribe</label>
+                            <div class="input-group">
+                                <input class="form-control" type="email" placeholder="Email Address" />
+                                <div class="input-group-prepend">
+                                    <button class="input-group-text btn btn-sm btn-info">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- my portfolio -->
+    <section class="portifolio" id="work">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-left" style="margin-top: 50px;">
+                    <span>
+                        <h3>Our Portifolio</h3>
+                        <hr>
+                    </span>
+                    <h5>neque voluptatum laboriosam quod nesciunt sunt cumque.</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro consequatur vel dignissimos distinctio ducimus facere, hic
+                        numquam alias praesentium? Cupiditate suscipit consequatur nostrum dolores commodi vel ratione eligendi
+                        repellat impedit.
+                    </p>
+                    <button class="btn btn-outline-white">
+                        We are Writers
+                    </button>
+                </div>
+                <div class="col-md-8">
+                    <div class="row" style=" margin-top: 40px;">
+                        <div class="col-md-6 wow fadeInLeft" data-wow-delay="0.6s">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="media">
+                                        <i class="h1-responsive d-flex align-self-center mr-3 responsive img-responsive fa fa-book"></i>
+                                        <div class="media-body">
+                                            <h5 class="mt-0">Academic Writing as a profession</h5>
+                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+                                                Cras purus odio, vestibulum .
+                                            </p>
+                                            <p class="mb-0 text-info">Read More..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow fadeInRight" data-wow-delay="0.6s">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="media">
+                                        <i class="h1-responsive d-flex align-self-center mr-3 responsive img-responsive fa fa-book"></i>
+                                        <div class="media-body">
+                                            <h5 class="mt-0">Academic Writing as a profession</h5>
+                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+                                                Cras purus odio, vestibulum .
+                                            </p>
+                                            <p class="mb-0 text-info">Read More..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 20px">
+                        <div class="col-md-6 wow slideInUp" data-wow-delay="0.6s">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="media">
+                                        <i class="h1-responsive d-flex align-self-center mr-3 responsive img-responsive fa fa-book"></i>
+                                        <div class="media-body">
+                                            <h5 class="mt-0">Academic Writing as a profession</h5>
+                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+                                                Cras purus odio, vestibulum .
+                                            </p>
+                                            <p class="mb-0 text-info">Read More..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow slideInDown" data-wow-delay="0.6s">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="media">
+                                        <i class="h1-responsive d-flex align-self-center mr-3 responsive img-responsive fa fa-book"></i>
+                                        <div class="media-body">
+                                            <h5 class="mt-0">Academic Writing as a profession</h5>
+                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+                                                Cras purus odio, vestibulum .
+                                            </p>
+                                            <p class="mb-0 text-info">Read More..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="social text-center">
+        <ul class="wow fadeInUp" data-wow-delay="0.6s">
+            <li class="social-li">
+                <a href="" class="">
+                    <i class="fa fa-facebook" style="color: #3D62B5"></i>
+                </a>
+            </li>
+            <li class="social-li">
+                <a href="" class="">
+                    <i class="fa fa-twitter" style="color: #00ACED"></i>
+                </a>
+            </li>
+            <li class="social-li ">
+                <a href="" class="">
+                    <img src="img/home_page/Google.png" class="img-responsive" />
+                </a>
+            </li>
+        </ul>
+    </section>
+    
+    <footer class="page-footer" style="padding-top: 5px">
+        <div class="info-color">
+            <div class="container-fluid container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3 class="center">About Iam A Writer</h3>
+                        <hr style="background-color: whitesmoke">
+                        <ul class="navbar-nav nav">
+                            <li>
+                                <a href="/about">Company Information</a>
+                            </li>
+                            <li>Privacy Policy</li>
+                            <li>Terms of use</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Social</h3>
+                        <hr style="background-color: whitesmoke">
+                        <p> Stay up-to-date through our social media channels:</p>
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="https://www.facebook.com/" style="background-color: transparent" class=" waves-effect waves-light">
+                                    <i class="fa fa-facebook" style="margin-right: 10px"></i>Facebook</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.twitter.com/" style="background-color: transparent" class=" waves-effect waves-light">
+                                    <i class="fa fa-twitter" style="margin-right: 10px"></i>Twitter</a>
+                            </li>
+                            <li class="nav-item">
+                                <i class="fa fa-instagram" style="margin-right: 10px"></i>Instagram</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Important Links</h3>
+                        <hr style="background-color: whitesmoke">
+                        <ul>
+                            <li>
+                                <a href="#!">Products</a>
+                            </li>
+                            <li>
+                                <a href="#!">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="#!">Business Partnerships</a>
+                            </li>
+                            <li>
+                                <a href="#!">About Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container-fluid info-color-dark">
+                <p>All Rights Reserved |&copy; 2018 | Iam A Writer</p>
+            </div>
+        </div>
+    </footer>
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
+</html>

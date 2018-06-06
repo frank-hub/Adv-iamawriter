@@ -1,0 +1,61 @@
+.card-title{
+    margin-top: 20px;
+}
+.title hr{
+margin-top:5px;
+margin-bottom: 2px;
+}
+.portifolio{
+    background-color: #33B5E5;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    
+    // font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif
+}
+
+.portifolio i{
+    color: #33B5E5;
+}
+.portifolio .card{
+   margin-bottom: 10px;
+}
+.portifolio button{
+    margin-top: 50px;
+}
+.social{
+    background-color: #fff;
+    text-align: center;
+    padding: 60px 0;
+}
+.social-li{
+    display: inline;
+    margin-left: 10px;
+}
+.social-li i{
+    font-size: 32px;
+    display: inline-block;
+    color: #33B5E5;
+    margin: 0 10px;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #c8ced7;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 60px;
+}
+
+.social-li img{
+    font-size: 32px;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #c8ced7;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 60px;
+}
+.social-li button{
+    border-radius: 50%;
+}
+
+/* Your custom styles */

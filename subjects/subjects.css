@@ -1,0 +1,16 @@
+  body{
+        background-color: #EEEEEE;
+    }
+    .sort{
+        margin-top: 10px;
+    }
+    .subject-item:hover{
+background-color:#E8E9EB;
+border-radius: 50px;
+    }
+    .subject-item a{
+        margin-left: 20px;
+        margin-top: 10px;
+        text-align: center;
+    }
+    
