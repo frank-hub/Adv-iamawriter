@@ -47,17 +47,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About MDB</a>
+                            <a class="nav-link waves-effect" href="" target="_blank">About MDB</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Free download</a>
+                            <a class="nav-link waves-effect" href="" target="_blank">Free download</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank">Free tutorials</a>
+                            <a class="nav-link waves-effect" href="" target="_blank">Free tutorials</a>
                         </li>
                     </ul>
                 </div>
-
+                <div class="ml-auto">
+                <a href="../class/logout.php" class="btn btn-sm btn-primary">
+                 <i class="fa fa-sign-out"></i> Logout
+                 </a>
+                </div>
             </div>
         </nav>
         <!-- Navbar -->
