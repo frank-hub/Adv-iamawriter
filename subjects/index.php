@@ -115,58 +115,40 @@
 			</ul>
 		</div>
 		<div class="col-md-10">
-            <div class="row text-md-center">
+              
+            <div class="row">
+            <?php
+            include '../class/conn.php';
+            $qry = "SELECT * FROM `subjects`";
+            $exec_qry = mysqli_query($connecting,$qry)or die(mysqli_error()); 
+            while ($result = mysqli_fetch_assoc($exec_qry)) {
+            ?>
                 <div class="col-md-3">
                     <div class="card">
                         <div class="card-img">
-                            <img src="../img/maxresdefault.jpg" class="img-fluid" />
+                            <!-- <img src="../img/maxresdefault.jpg" class="img-fluid" /> -->
+                            <img src="../dashboard/uploads/<?php echo $result['subject_file'] ?>" alt="<?php echo $result['subject_file'] ?>" title="<?php echo $result['subject_file'] ?>" class="img-fluid">
                         </div>
-                        <div class="card-footer">
-                            <button class="btn btn-sm btn-info float-left" style="margin: 0px"><i class="fa fa-eye"></i></button>
-                            <button class="btn btn-sm info-color-dark float-right"  style="margin: 0px"><i class="fa fa-download"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="../img/maxresdefault.jpg" class="img-fluid" />
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-sm btn-info float-left" style="margin: 0px"><i class="fa fa-eye"></i></button>
-                            <button class="btn btn-sm info-color-dark float-right"  style="margin: 0px"><i class="fa fa-download"></i></button>
+                        <div class="card-body">
+                             <p class="text-muted" ><?php echo $result['subject_name'] ?></p>
+                            <hr>
+                            <h6>Posted : <?php echo $result['date_uploaded'] ?></h6>
+                            <div>
+                                <button class="btn btn-sm btn-info float-left" style="margin: 0px"><i class="fa fa-eye"></i></button>
+                                <a href="download.php?id=<?php echo $result['subject_id'] ?>" class="btn btn-sm info-color-dark float-right"  style="margin: 0px"><i class="fa fa-download"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="../img/maxresdefault.jpg" class="img-fluid" />
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-sm btn-info float-left" style="margin: 0px"><i class="fa fa-eye"></i></button>
-                            <button class="btn btn-sm info-color-dark float-right"  style="margin: 0px"><i class="fa fa-download"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="../img/maxresdefault.jpg" class="img-fluid" />
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-sm btn-info float-left" style="margin: 0px"><i class="fa fa-eye"></i></button>
-                            <button class="btn btn-sm info-color-dark float-right"  style="margin: 0px"><i class="fa fa-download"></i></button>
-                        </div>
-                    </div>
-                </div>
-                
+                 <?php
+
+        }
+        ?>
             </div>
         </div>
 </div>
 </div>
-
-<footer class="page-footer fixed-bottom" style="padding-top: 5px">
+<footer class="page-footer" style="padding-top: 5px">
     <div class="info-color">
         <div class="container-fluid container">
             <div class="row">
