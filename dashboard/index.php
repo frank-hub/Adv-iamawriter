@@ -17,7 +17,19 @@
 </head>
 
 <body class="grey lighten-3">
+<?php
+include '../class/conn.php';
+session_start();
+// include('../login/auth.php');
 
+if (isset($_SESSION['username'])) {
+$user =  $_SESSION['username'];
+
+}
+else {
+    header("location:../login/");
+}
+?>
     <!--Main Navigation-->
     <header>
 
@@ -58,6 +70,7 @@
                     </ul>
                 </div>
                 <div class="ml-auto">
+                <?php echo $_SESSION['username']; ?>
                 <a href="../class/logout.php" class="btn btn-sm btn-primary">
                  <i class="fa fa-sign-out"></i> Logout
                  </a>
@@ -180,48 +193,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Philosophy</td>
-                            <td>06/05/2018</td>
-                            <td></td>
-                            <td>Free</td>
+                        <?php
+                        $qrys = "SELECT * FROM `subjects`";
+                        $exec  = mysqli_query($connecting,$qrys);
+                        while ($result = mysqli_fetch_array($exec)) {
+                            $id = $result['subject_id'];
+                            ?>
+                            <tr>
+                            <td><?php echo $result['subject_name'] ?></td>
+                            <td><?php echo $result['date_uploaded'] ?></td>
+                            <td><?php echo $result['subject_cat'] ?></td>
+                            <td><?php echo $result['subject_file'] ?></td>
                             <td>
                                 <button class="btn btn-sm btn-info " style="padding: 2px;margin: 0px">
                                     <i class="fa fa-eye"></i>
                                 </button>
                             </td>
                             <td>
-                                <button class="btn btn-sm btn-danger " style="padding: 2px;margin: 0px">
-                                    <i class="fa fa-trash"></i><span>
-                                        Delete
-                                    </span>
-                                </button>
+                                    <button class="delete btn btn-sm btn-danger" id='del_<?= $id ?>' style="padding: 2px;margin: 0px">
+                                        <i class="fa fa-trash"></i><span>
+                                            Delete
+                                        </span>
+                                    </button>
                             </td>
+
                         </tr>
-                        <tr>
-                        <td>Philosophy</td>
-                        <td>06/05/2018</td>
-                        <th></th>
-                        <td>Free</td>
-                        <td>
-                            <button class="btn btn-sm btn-info " style="padding: 2px;margin: 0px">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-danger " style="padding: 2px;margin: 0px">
-                                <i class="fa fa-trash"></i>
-                                <span>
-                                    Delete
-                                </span>
-                            </button>
-                        </td>
-                        </tr>
+                        <?php
+                            }   
+                         ?>
                     </tbody>
                 </table>
             </div>
-        
-            
     </main>
     <!--Main layout-->
 
@@ -268,10 +270,49 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
+     <!--Bootbox -->
+    <script type="text/javascript" src="js/bootbox.min.js"></script>
     <!-- Initializations -->
     <script type="text/javascript">
         // Animations initialization
         new WOW().init();
+
+        $(document).ready(function(){
+
+  // Delete 
+  $('.delete').click(function(){
+    var el = this;
+    var id = this.id;
+    var splitid = id.split("_");
+
+    // Delete id
+    var deleteid = splitid[1];
+ 
+    // Confirm box
+    bootbox.confirm("Are you sure want to delete?", function(result) {
+ 
+       if(result){
+         // AJAX Request
+         $.ajax({
+           url: 'delete.php',
+           type: 'POST',
+           data: { id:deleteid },
+           success: function(response){
+
+             // Removing row from HTML Table
+             $(el).closest('tr').css('background','tomato');
+             $(el).closest('tr').fadeOut(800, function(){ 
+               $(this).remove();
+             });
+
+           }
+         });
+       }
+ 
+    });
+ 
+  });
+});
     </script>
 
 </body>

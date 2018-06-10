@@ -92,36 +92,107 @@
         <!-- Sidebar -->
 
     </header>
-
     <main class="pt-5 mx-lg-5">
-        <form action="">
+    <div class="row flex-center" style="margin-top:50px;">
+    <div class="col-md-8">
+    <?php
+        // if (isset($_GET['publish'])) {
+        //     $connecting = mysqli_connect("localhost" , "root" , "12012" , "iamawriter");
+
+        //     $sub_name = $_GET['subj_name'];
+        //     $sub_file = $_GET['status'];
+        //     $subject_cats = $_GET['book_cat'];
+        //     // $subject_cats = md5($subject_cat);
+        //     $date = date('D/M/Y');
+        //     $qry = "INSERT INTO `subjects`(`subject_name`, `subject_file`, `date_uploaded`, `subject_cat`) 
+        //     VALUES('$sub_name','$sub_file','$date','$subject_cats')";
+
+        //     mysqli_query($connecting,$qry)or die(mysqli_error($connecting));
+        //     // mysqli_close($connecting);
+        // }
+
+        if (isset($_POST['publish'])) 
+    {
+        upload();
+    }
+
+    function upload()
+    {
+       
+            $connecting = mysqli_connect("localhost" , "root" , "12012" , "iamawriter");
+            if (isset($_FILES['subject_file'])) 
+            {  
+               $names = $_FILES['subject_file']['name'];
+               $sizes = $_FILES['subject_file']['size'];
+               $types = $_FILES['subject_file']['type'];
+               $tmp = $_FILES['subject_file']['tmp_name'];
+               $folder_location = 'uploads/'.$_FILES['subject_file']['name'];
+               $move = move_uploaded_file($tmp,$folder_location);
+                
+               if ($move) {
+                   $sub_name = $_POST['subj_name'];
+                $sub_file = $_POST['status'];
+                $subject_cats = $_POST['book_cat'];
+                // $subject_cats = md5($subject_cat);
+                $date = date('D/M/Y');
+                   $qry = "INSERT INTO `subjects`(`subject_name`, `subject_file`, `date_uploaded`, `subject_cat`) 
+                             VALUES('$sub_name','$names','$date','$subject_cats')";
+                   if (mysqli_query($connecting,$qry)or die(mysqli_error($connecting))) {
+                      ?>
+                      <div class="btn btn-block alert alert-success alert-dismissable" role="alert">
+                          <button type="button " class="close" data-dismiss="alert" aria-label="close">
+                          <strong>Success</strong>The Subject <?php echo $sub_name ?> has been upload/published
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <?php
+               }
+               else{
+                   ?>
+                   <div class="btn btn-block alert alert-danger alert-dismissable" role="alert">
+                          <button type="button " class="close" data-dismiss="alert" aria-label="close">
+                          <strong>Failed !</strong>The Subject failed to upload try again .
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                   <?php
+               }
+           }
+        }
+    }
+
+        ?>
+    </div>
+    </div>
+        <form  method="post" enctype="multipart/form-data">
             <div class="row" style="margin-top: 50px">
                 <div class="col-md-4">
                     <img src="img/placeholder/350x200.png" alt="" class="img-thumbnail">
+                    
                     <br>
                     <hr>
-                    <input type="file" name="" id="userImage" required>
+                    <input type="file" name="subject_file" id="userImage" required>
                 </div>
                 <div class="col-md-6">
         
                     <!-- Material input text -->
                     <div class="md-form">
                         <i class="fa fa-book prefix grey-text"></i>
-                        <input type="text" id="materialFormRegisterNameEx" class="form-control" required>
-                        <label for="materialFormRegisterNameEx">File Name</label>
+                        <input type="text" id="sub_name" name="subj_name" class="form-control" required>
+                        <label for="sub_name">File Name</label>
                     </div>
         
                     <!-- Material input id -->
                     <div class="md-form">
-                        <i class="fa fa-calendar prefix grey-text"></i>
-                        <input type="date" id="date" class="form-control" required>
-                        <!-- <label for="date">Date</label> -->
+                        <i class="fa fa-clipboard prefix grey-text"></i>
+                        <input type="text" id="desc" class="form-control" required>
+                        <label for="desc">Description</label>
                     </div>
         
                     <!-- Material input email -->
                     <div class="md-form">
                         <!-- <i class="fa fa-envelope prefix grey-text"></i> -->
-                        <select class="form-control" required>
+                        <select class="form-control" name="status" required>
                             <option value="selected" selected>Status</option>
                             <option value="free">Free</option>
                             <option value="sell">Selling</option>
@@ -132,26 +203,18 @@
                     <!-- Material input email -->
                     <div class="md-form">
                         <i class="fa fa-folder-open prefix grey-text"></i>
-                        <input type="text" id="materialFormRegisterConfirmEx" class="form-control" required>
-                        <label for="materialFormRegisterConfirmEx">Book Category</label>
-                    </div>
-        
-                    <!-- Material input password
-                    <div class="md-form">
-                        <i class="fa fa-lock prefix grey-text"></i>
-                        <input type="password" id="materialFormRegisterPasswordEx" class="form-control" required>
-                        <label for="materialFormRegisterPasswordEx">Your password</label>
-                    </div> -->
-        
+                        <input type="text" id="cat" name="book_cat" class="form-control" required>
+                        <label for="cat">Book Category</label>
+                    </div>        
                     <div class="text-center mt-4">
-                        <button class="btn btn-primary" type="submit">PUBLISH</button>
+                        <button class="btn btn-primary" name="publish">PUBLISH</button>
                     </div>
         
                     <!-- Material form register -->
                 </div>
             </div>
         </form>
-
+        
     </main>
     <!--Main layout-->
 
@@ -198,7 +261,7 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
-    <!-- Initializations -->
+       <!-- Initializations -->
     <script type="text/javascript">
         // Animations initialization
         new WOW().init();

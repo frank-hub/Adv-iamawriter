@@ -15,10 +15,11 @@ if (isset($_POST['login_btn'])) {
 
      if(mysqli_num_rows($exec) == 1){
         session_start();
-        $user_logged_in = mysql_fetch_array($exec);
+        $user_logged_in = mysqli_fetch_array($exec)or die(mysqli_error($connecting));
 
         $_SESSION['username'] = $user_logged_in['username'];
-        
+        $_SESSION['success'] = true;
+        // echo $_SESSION['username'];
         header("Location:../dashboard");
      }
      else {
