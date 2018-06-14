@@ -1,25 +1,6 @@
 <?php
 include '../class/conn.php'; 
 
-// if (isset($_GET['id'])) {
-//     $id = $_GET['id'];
-//    $qry = "SELECT * FROM `subjects` WHERE subject_id='$id'";
-//    $exec_qrys = mysqli_query($connecting,$qry)or die(mysqli_error($connecting));
-//    $data = mysqli_fetch_array($exec_qrys)or die(mysqli_error($connecting));
-
-//    $file = '../dashboard/uploads/'.$data['subject_file'];
-//    if (file_exists($file)) {
-//         header('Content-Description:'.$data['description']);
-//         header('Content-Type:'.$data['type']);
-//         header('Content-Disposition:'.$data['disposition'].'; filename ="'.basename($file).'"');
-//         header('Expires: '.$data['expires']);
-//         header('Cache-Control: '.$data['cache']);
-//         header('Pragma: '.$data['pragma']);
-//         header('Content-Length: '.filesize($file));
-//         readfile($file);
-//         exit;
-//    }
-// }
 
 $FileNo=$_GET['id'];
 

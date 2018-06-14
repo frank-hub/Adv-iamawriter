@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Material Design Bootstrap</title>
+    <title>Iam A Writer</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -117,7 +117,12 @@ else {
                         <div class="card-body danger-color">
                             <div class="row">
                             <div class="col-sm-6">
-                                <h2 style="font-weight: bold">25</h2>
+                            <?php
+                             $qrycount = "SELECT COUNT(subject_id) from subjects where STATUS = 'free'";
+                                 $free = mysqli_query($connecting,$qrycount)or die(mysqli_error($connecting));
+                                 $free_result = mysqli_fetch_array($free);
+                            ?>
+                                <h2 style="font-weight: bold"><?php echo $free_result['0']; ?></h2>
                             </div>
                             <div class="col-sm-6">
                                 <h3><i class="fa fa-book wow zoomIn"   data-wow-delay="0.6s"></i></h3>
@@ -132,7 +137,12 @@ else {
                         <div class="card-body warning-color">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h2 style="font-weight: bold">0</h2>
+                                 <?php
+                             $qrysell = "SELECT COUNT(subject_id) from subjects where STATUS = 'selling'";
+                                 $sell = mysqli_query($connecting,$qrysell)or die(mysqli_error($connecting));
+                                 $sell_result = mysqli_fetch_array($sell);
+                            ?>
+                                    <h2 style="font-weight: bold"><?php echo $sell_result['0']; ?></h2>
                                 </div>
                                 <div class="col-sm-6">
                                     <h3>
@@ -194,7 +204,7 @@ else {
                     </thead>
                     <tbody>
                         <?php
-                        $qrys = "SELECT * FROM `subjects`";
+                        $qrys = "SELECT * FROM `subjects` ORDER BY `subject_id` DESC";
                         $exec  = mysqli_query($connecting,$qrys);
                         while ($result = mysqli_fetch_array($exec)) {
                             $id = $result['subject_id'];
@@ -228,7 +238,7 @@ else {
     <!--Main layout-->
 
     <!--Footer-->
-    <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn fixed-bottom">
+    <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
 
         <hr class="my-4">
 

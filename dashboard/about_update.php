@@ -117,25 +117,31 @@
 <div class="tab-content card">
         <!--Panel 1-->
     <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
+     <?php
+    include '../class/conn.php';
+    $qry = "SELECT * FROM `about`";
+    $exc_qry = mysqli_query($connecting,$qry);
+    
+    ?>
         <div class="flex-center">
-<textarea name="about" id="" cols="30" rows="10" style="">
-            Current content at the home page
-        </textarea>
-<textarea name="about" id="" cols="30" rows="10">
-                    Current content at the home page
-        </textarea>
-<textarea name="about" id="" cols="30" rows="10">
-                    Current content at the home page
-        </textarea>
+        <?php 
+        while ($results = mysqli_fetch_assoc($exc_qry))
+         {
+        ?>
+        <textarea name="about" id="" cols="30" rows="10" style=""><?php echo $results['content1'] ?></textarea>
+<textarea name="about" id="" cols="30" rows="10"><?php echo $results['content2'] ?></textarea>
+<textarea name="about" id="" cols="30" rows="10"><?php echo $results['content3'] ?></textarea>
+        <?php
+        }
+        ?>
         </div>
     </div>
     <!--/.Panel 1-->
     <!--Panel 2-->
     <div class="tab-pane fade" id="panel2" role="tabpanel">
+   
         <br>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
-            reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
-            porro voluptate odit minima.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur voluptates nostrum qui animi obcaecati nemo,</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
             reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
             porro voluptate odit minima.</p>
@@ -146,24 +152,39 @@
         <br>
        <div class="row flex-center">
            <div class="col-md-8">
-            <form action="" method="post">
+            <form method="post">
                 <div class="md-form">
                     <label for="cont1">Content 1</label>
                     <textarea name="cont1" id="" class="form-control" required></textarea>
                 </div>
                 <div class="md-form">
-                    <label for="cont1">Content 2</label>
+                    <label for="cont2">Content 2</label>
                     <textarea name="cont2" id="" class="form-control" required></textarea>
                 </div>
                 <div class="md-form">
-                    <label for="cont1">Content 3</label>
+                    <label for="cont3">Content 3</label>
                     <textarea name="cont3" id="" class="form-control" required></textarea>
                 </div>
                 <div class="md-form">
-                    <button type="submit" class="btn  btn-info">UPDATE</button>
+                    <button type="submit" class="btn  btn-info" name="updates" >UPDATE</button>
                 </div>
             </form>
            </div>
+           <?php 
+           if (isset($_POST['updates'])) {
+               update();
+           }
+           function update(){
+               include '../class/conn.php';
+               $content1 = $_POST['cont1'];
+               $content2 = $_POST['cont2'];
+               $content3 = $_POST['cont3'];
+               $qry = "UPDATE `about` SET `content1`='$content1',`content2`='$content2',`content3`='$content3'";
+               mysqli_query($connecting,$qry);
+               mysqli_close($connecting);
+               
+           }
+           ?>
        </div>
     </div>
     <!--/.Panel 3-->

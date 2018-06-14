@@ -131,12 +131,12 @@
                 
                if ($move) {
                    $sub_name = $_POST['subj_name'];
-                $sub_file = $_POST['status'];
                 $subject_cats = $_POST['book_cat'];
                 // $subject_cats = md5($subject_cat);
+                $state = $_POST['status'];
                 $date = date('D/M/Y');
-                   $qry = "INSERT INTO `subjects`(`subject_name`, `subject_file`, `date_uploaded`, `subject_cat`) 
-                             VALUES('$sub_name','$names','$date','$subject_cats')";
+                   $qry = "INSERT INTO `subjects`(`subject_name`, `subject_file`, `date_uploaded`,`status`,`subject_cat`) 
+                             VALUES('$sub_name','$names','$date','$state','$subject_cats')";
                    if (mysqli_query($connecting,$qry)or die(mysqli_error($connecting))) {
                       ?>
                       <div class="btn btn-block alert alert-success alert-dismissable" role="alert">

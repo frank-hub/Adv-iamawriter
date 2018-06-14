@@ -147,24 +147,37 @@
        <div class="row flex-center">
            <div class="col-md-8">
             <form action="" method="post">
-                <div class="md-form">
-                    <label for="cont1">Content 1</label>
-                    <textarea name="cont1" id="" class="form-control" required></textarea>
+                <div class="row">
+                div.col-md-
                 </div>
                 <div class="md-form">
-                    <label for="cont1">Content 2</label>
-                    <textarea name="cont2" id="" class="form-control" required></textarea>
+                    <label for="p4">Content 4</label>
+                    <textarea name="port4" id="" class="form-control" required></textarea>
                 </div>
                 <div class="md-form">
-                    <label for="cont1">Content 3</label>
-                    <textarea name="cont3" id="" class="form-control" required></textarea>
+                    <label for="p5">Content 5</label>
+                    <textarea name="port5" id="" class="form-control" required></textarea>
                 </div>
                 <div class="md-form">
-                    <button type="submit" class="btn  btn-info">UPDATE</button>
+                    <button type="submit" class="btn  btn-info" name="port_update">UPDATE</button>
                 </div>
             </form>
            </div>
        </div>
+       <?php
+       
+       if (isset($_POST['port_update'])) {
+          portfolio();
+       }
+       function portfolio(){
+           include'../class/conn.php';
+           $portfolio1 = $_POST['port1'];
+           $portfolio2 = $_POST['port2'];
+           $portfolio3 = $_POST['port3'];
+
+           $qry = "INSERT INTO `portfolio`(`content1`, `content2`, `content3`, `content4`, `content5`) VALUES";
+       }
+       ?>
     </div>
     <!--/.Panel 3-->
     </div>

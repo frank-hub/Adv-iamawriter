@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Subjects</title>
+    <title>Iam A Writer | Subjects</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -23,7 +23,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark info-color" style="opacity: 0.5s;">
 
 <!-- Navbar brand -->
-<a class="navbar-brand" href="#" style="font-weight: bold">Iam A Writer</a>
+<a class="navbar-brand" href="../" style="font-weight: bold">Iam A Writer</a>
 
 <!-- Collapse button -->
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
@@ -48,6 +48,9 @@
         <li class="nav-item active">
             <a class="nav-link waves-effect waves-light" href="">The Subjects</a>
             <span class="sr-only">(current)</span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link waves-effect waves-light" href="http://iamawriter.blog/" target="_blank">Blog</a>
         </li>
         <!-- Dropdown -->
         <!-- <li class="nav-item dropdown">
@@ -112,6 +115,7 @@
 				<li class="subject-item"><a href="">PDF</a></li>
 				<li class="subject-item"><a href="">DOC</a></li>
 				<li class="subject-item"><a href="">PPT</a></li>
+
 			</ul>
 		</div>
 		<div class="col-md-10">
@@ -119,22 +123,31 @@
             <div class="row">
             <?php
             include '../class/conn.php';
-            $qry = "SELECT * FROM `subjects`";
+            $qry = "SELECT * FROM `subjects` ORDER BY `subject_id` DESC";
             $exec_qry = mysqli_query($connecting,$qry)or die(mysqli_error()); 
             while ($result = mysqli_fetch_assoc($exec_qry)) {
             ?>
-                <div class="col-md-3">
+                <div class="col-md-3" title="<?php echo $result['subject_file'] ?>" style="margin-top:5px;">
                     <div class="card">
                         <div class="card-img">
-                            <!-- <img src="../img/maxresdefault.jpg" class="img-fluid" /> -->
-                            <img src="../dashboard/uploads/<?php echo $result['subject_file'] ?>" alt="<?php echo $result['subject_file'] ?>" title="<?php echo $result['subject_file'] ?>" class="img-fluid">
+                        <?php 
+                        $len = strlen($result['subject_name']);
+                        if ($len > "7") { ?>
+                          <img src="../img/subject.png" class="img-fluid" alt="<?php echo $result['subject_file'] ?>" title="<?php echo $result['subject_file'] ?>" />
+                       <?php }
+                       else {?>
+                          <img src="../img/subject1.png" class="img-fluid" alt="<?php echo $result['subject_file'] ?>" title="<?php echo $result['subject_file'] ?>" />
+                          <?php
+                       }
+                        ?>                            
+                            <!-- <img src="../dashboard/uploads/<?php echo $result['subject_file'] ?>" alt="<?php echo $result['subject_file'] ?>" title="<?php echo $result['subject_file'] ?>" class="img-fluid"> -->
                         </div>
                         <div class="card-body">
                              <p class="text-muted" ><?php echo $result['subject_name'] ?></p>
                             <hr>
                             <h6>Posted : <?php echo $result['date_uploaded'] ?></h6>
                             <div>
-                                <button class="btn btn-sm btn-info float-left" style="margin: 0px"><i class="fa fa-eye"></i></button>
+                                <button class="btn btn-sm btn-info float-left" name="<?php $result['subject_name'] ?>" data-toggle="modal" data-target="#exampleModal" style="margin: 0px"><i class="fa fa-eye"></i></button>
                                 <a href="download.php?id=<?php echo $result['subject_id'] ?>" class="btn btn-sm info-color-dark float-right"  style="margin: 0px"><i class="fa fa-download"></i></a>
                             </div>
                         </div>
@@ -145,6 +158,27 @@
         }
         ?>
             </div>
+              <!-- view model -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-lg" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><?php echo $result['subject_name']; ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, odio officia modi nihil neque doloremque fuga natus est voluptatum aut earum ratione similique id aperiam voluptatibus unde aspernatur harum eum.
+                </div>
+                <div class="modal-footer flex-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                     <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+                </div>
+            </div>
+            </div>
+            <!-- view modal -->
         </div>
 </div>
 </div>
